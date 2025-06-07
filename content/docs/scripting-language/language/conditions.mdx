@@ -1,0 +1,41 @@
+---
+title: 🔀 Conditions
+---
+
+## Conditional Execution
+
+You can conditionally execute blocks or commands using `IF` statements.
+
+---
+
+### Syntax
+
+```plaintext
+IF "<value1>" is "<value2>"
+<commands>
+IF_END
+```
+
+- All commands between `IF` and `IF_END` are executed **only if** the condition is true.
+- Both values must be quoted.
+- Comparison is strict: values must exactly match (including case and spaces).
+
+---
+
+### Example
+
+```plaintext
+IF "admin" is "admin"
+writeLn "Access granted"
+IF_END
+```
+- The command runs because the condition is true.
+
+---
+
+```plaintext
+IF "foo" is "bar"
+writeLn "This will not run"
+IF_END
+```
+- The command does **not** run because the condition is false.

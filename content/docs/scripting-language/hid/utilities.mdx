@@ -1,0 +1,310 @@
+---
+title: ⚙️ Utility Commands
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+## LED Control Commands
+
+<Tabs items={["ledColor", "ledBlink", "ledOff", "ledBrightness"]}>
+    <Tab value="ledColor">
+        **Description:** Sets RGB LED to a specific color.
+
+        **Syntax:**
+        ```plaintext
+        ledColor <r> <g> <b>
+        ```
+
+        **Parameters:**
+        - `r`: Red value (0-255)
+        - `g`: Green value (0-255)
+        - `b`: Blue value (0-255)
+
+        **Example:**
+        ```plaintext
+        ledColor 255 0 0     # Red
+        ledColor 0 255 100   # Teal
+        ```
+    </Tab>
+
+    <Tab value="ledBlink">
+        **Description:** Makes LED blink with specified color and timing.
+
+        **Syntax:**
+        ```plaintext
+        ledBlink <r> <g> <b> <delayMs> <count>
+        ```
+
+        **Example:**
+        ```plaintext
+        ledBlink 255 0 0 500 3   # Blink red 3 times (500ms intervals)
+        ```
+    </Tab>
+
+    <Tab value="ledOff">
+        **Description:** Turns off the LED.
+
+        **Syntax:**
+        ```plaintext
+        ledOff
+        ```
+
+        **Example:**
+        ```plaintext
+        ledOff
+        ```
+    </Tab>
+
+    <Tab value="ledBrightness">
+        **Description:** Sets LED brightness (0-255).
+
+        **Syntax:**
+        ```plaintext
+        ledBrightness <level>
+        ```
+
+        **Example:**
+        ```plaintext
+        ledBrightness 128   # 50% brightness
+        ```
+    </Tab>
+</Tabs>
+
+## Device & System Control
+
+<Tabs items={["selfDestruct", "formatStorage", "reboot", "watchdog", "stateChange", "reconMode", "storageMode", "attackMode"]}>
+    <Tab value="selfDestruct">
+        **Description:** Securely destroys data and disables the device.
+
+        **Syntax:**
+        ```plaintext
+        selfDestruct
+        ```
+
+        **Example:**
+        ```plaintext
+        selfDestruct
+        ```
+    </Tab>
+
+    <Tab value="formatStorage">
+        **Description:** Formats (erases) the device storage.
+
+        **Syntax:**
+        ```plaintext
+        formatStorage
+        ```
+
+        **Example:**
+        ```plaintext
+        formatStorage
+        ```
+    </Tab>
+
+    <Tab value="reboot">
+        **Description:** Reboots the device.
+
+        **Syntax:**
+        ```plaintext
+        reboot
+        ```
+
+        **Example:**
+        ```plaintext
+        reboot
+        ```
+    </Tab>
+
+    <Tab value="watchdog">
+        **Description:** Runs the WiFi watchdog/geolocation routine.
+
+        **Syntax:**
+        ```plaintext
+        watchdog '<ssid>' <maxRetries> <retryDelay> <executionDelay>
+        ```
+
+        **Example:**
+        ```plaintext
+        watchdog 'MyWiFi' 5 10 60
+        ```
+    </Tab>
+
+    <Tab value="stateChange">
+        **Description:** Triggers a state change event.
+
+        **Syntax:**
+        ```plaintext
+        stateChange '<key>'
+        ```
+
+        **Example:**
+        ```plaintext
+        stateChange 'payload_started'
+        ```
+    </Tab>
+
+    <Tab value="reconMode">
+        **Description:** Enables or disables recon mode.
+
+        **Syntax:**
+        ```plaintext
+        reconMode '<true|false>'
+        ```
+
+        **Example:**
+        ```plaintext
+        reconMode 'true'
+        ```
+    </Tab>
+
+    <Tab value="storageMode">
+        **Description:** Mounts the device as a USB mass storage device with custom parameters.
+
+        **Syntax:**
+        ```plaintext
+        storageMode <volumeName> <productId> <vendorId>
+        ```
+
+        **Example:**
+        ```plaintext
+        storageMode "MYDISK" "1234" "5678"
+        ```
+    </Tab>
+
+    <Tab value="attackMode">
+        **Description:** Enables or disables specific device attack modes (HID, MOUSE, MSC).
+
+        **Syntax:**
+        ```plaintext
+        attackMode <mode> <state>
+        ```
+
+        **Example:**
+        ```plaintext
+        attackMode HID true      // Enable HID keyboard
+        attackMode MOUSE false   // Disable mouse
+        attackMode MSC false     // Disable mass storage
+        ```
+    </Tab>
+
+</Tabs>
+
+## Monitoring & Automation
+<Tabs items={["watchdog", "reconMode", "stateChange", "bruteForce"]}>
+    <Tab value="watchdog">
+        **Description:** Monitors for WiFi network availability.
+
+        **Syntax:**
+        ```plaintext
+        watchdog <ssid> <maxRetries> <retryDelayMs> <executionDelayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        watchdog "MyWiFi" 5 1000 5000
+        ```
+    </Tab>
+
+    <Tab value="reconMode">
+        **Description:** Enables/disables reconnaissance mode.
+
+        **Syntax:**
+        ```plaintext
+        reconMode <state>
+        ```
+
+        **States:** `true` or `false`
+
+        **Example:**
+        ```plaintext
+        reconMode true
+        ```
+    </Tab>
+
+    <Tab value="stateChange">
+        **Description:** Monitors keyboard lock keys and waits for state change.
+
+        **Supported Keys:**
+        - `capslock`
+        - `numlock`
+        - `scrolllock`
+
+        **Syntax:**
+        ```plaintext
+        stateChange <key>
+        ```
+
+        **Example:**
+        ```plaintext
+        stateChange 'capslock'   // Waits until CapsLock state changes
+        stateChange 'numlock'    // Waits until NumLock state changes
+        ```
+
+        <Callout type="info">
+            This command will pause script execution until the specified key's state changes\!
+        </Callout>
+    </Tab>
+
+    <Tab value="bruteForce">
+        **Description:** Attempts all possible combinations for a given range, optionally using a custom character set and username, with configurable delay and jitter.
+
+        **Syntax:**
+        ```plaintext
+        bruteForce <range> <delayMs> <newLine> <useUsername> <username> <useJitterDelay> <useCharSet> <charSet>
+        ```
+
+        **Parameters:**
+        - `range`: Number of characters/digits in each attempt
+        - `delayMs`: Delay between attempts (milliseconds)
+        - `newLine`: `true` to send Enter after each attempt, `false` otherwise
+        - `useUsername`: `true` to prepend username, `false` otherwise
+        - `username`: Username to prepend (if `useUsername` is `true`)
+        - `useJitterDelay`: `true` to randomize delay, `false` for fixed delay
+        - `useCharSet`: `true` to use custom character set, `false` for numeric
+        - `charSet`: Characters to use (if `useCharSet` is `true`)
+
+        **Example:**
+        ```plaintext
+        bruteForce 4 100 true false "" false false ""
+        bruteForce 3 200 false true "admin" true true "abc123"
+        ```
+
+        <Callout type="warning">
+            Use responsibly. This command will generate a large number of input attempts\!
+        </Callout>
+    </Tab>
+</Tabs>
+
+## Timing Controls
+
+<Tabs items={["delay", "defaultdelay"]}>
+    <Tab value="delay">
+        **Description:** Pauses execution (milliseconds).
+
+        **Syntax:**
+        ```plaintext
+        delay <ms>
+        ```
+
+        **Example:**
+        ```plaintext
+        delay 1000  # 1 second pause
+        ```
+    </Tab>
+
+    <Tab value="defaultdelay">
+        **Description:** Sets default delay between commands.
+
+        **Syntax:**
+        ```plaintext
+        defaultdelay <ms>
+        ```
+
+        **Example:**
+        ```plaintext
+        defaultdelay 50  // 50ms between all commands
+        defaultdelay 0   // No delay
+        ```
+    </Tab>
+</Tabs>

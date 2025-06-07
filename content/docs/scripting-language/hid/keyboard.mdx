@@ -1,0 +1,273 @@
+---
+title: ⌨️ Keyboard Commands
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+## Text Input Commands
+
+<Tabs items={["write", "writeLn", "accurateWrite", "accurateWriteLn"]}>
+    <Tab value="write">
+        **Description:** Prints the provided text as keyboard input.
+
+        **Syntax:**
+        ```plaintext
+        write '<text>'
+        ```
+
+        **Example:**
+        ```plaintext
+        write 'Hello, World!'
+        ```
+    </Tab>
+
+    <Tab value="writeLn">
+        **Description:** Prints the provided text followed by pressing `Enter`.
+
+        **Syntax:**
+        ```plaintext
+        writeLn '<text>'
+        ```
+
+        **Example:**
+        ```plaintext
+        writeLn 'Hello, World!'
+        ```
+    </Tab>
+
+    <Tab value="accurateWrite">
+        **Description:** Types the provided text with a specified delay (in ms) between each character.
+
+        **Syntax:**
+        ```plaintext
+        accurateWrite '<text>' <delayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        accurateWrite 'Hello, World!' 50
+        ```
+    </Tab>
+
+    <Tab value="accurateWriteLn">
+        **Description:** Types the provided text with a specified delay (in ms) between each character, then presses `Enter`.
+
+        **Syntax:**
+        ```plaintext
+        accurateWriteLn '<text>' <delayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        accurateWriteLn 'Hello, World!' '50'
+        ```
+    </Tab>
+</Tabs>
+
+## Key Press Commands
+
+<Tabs items={["key", "comboKey", "arrowKey"]}>
+    <Tab value="key">
+        **Description:** Presses and releases a specific keyboard key. Optionally, you can specify whether to hold or release the key.
+
+        **Supported Keys:**
+        - **Modifiers:** `ctrl`, `leftctrl`, `shift`, `leftshift`, `alt`, `leftalt`, `gui`, `leftgui`, `win`, `rightctrl`, `rightshift`, `rightalt`, `altgr`, `rightgui`
+        - **Arrow Keys:** `up`, `down`, `left`, `right`
+        - **Function Keys:** `F1` to `F24`
+        - **Special Keys:** `enter`, `esc`, `backspace`, `space`, `tab`, `delete`, `insert`, `home`, `end`, `pageup`, `pagedown`, `capslock`, `numlock`, `scrolllock`, `menu`, `prtsc`, `printscreen`, `pause`
+        - **Numpad Keys:** `numslash`, `numasterisk`, `numminus`, `numplus`, `numenter`, `num1`-`num0`, `numdot`
+        - **Single Characters:** Any single character (e.g., `a`, `b`, `1`, `2`, etc.)
+
+        **Syntax:**
+        ```plaintext
+        key '<key_name>' '[<action>]'
+        ```
+
+        **Example:**
+        ```plaintext
+        key 'esc'
+        key 'ctrl' 'hold'
+        key 'ctrl' 'release'
+        ```
+    </Tab>
+
+    <Tab value="comboKey">
+        **Description:** Simulates pressing multiple keys simultaneously.
+
+        **Syntax:**
+        ```plaintext
+        comboKey '<key1+key2+...>'
+        ```
+
+        **Example:**
+        ```plaintext
+        comboKey 'ctrl+shift+esc'
+        comboKey 'alt+tab'
+        ```
+    </Tab>
+
+    <Tab value="arrowKey">
+        **Description:** Presses an arrow key (`up`, `down`, `left`, or `right`).
+
+        **Syntax:**
+        ```plaintext
+        arrowKey '<direction>'
+        ```
+
+        **Example:**
+        ```plaintext
+        arrowKey 'left'
+        arrowKey 'down'
+        ```
+    </Tab>
+</Tabs>
+
+## System Control Commands
+
+<Tabs items={["keyboardLayout", "terminal", "mediaKey", "systemKey"]}>
+    <Tab value="keyboardLayout">
+        **Description:** Changes the keyboard layout to a specified language.
+
+        **Supported Layouts:** `German`, `English`, `English_UK`, `French`, `Spanish`, `Portuguese`, `Portuguese_BR`
+        `Italian`, `Danish`, `Swedish`, `Turkish`, `Chinese`, `Japanese`, `Korean`, `Russian`, `Arabic`
+        `Hindi`, `Polish`, `Dutch`
+
+        **Syntax:**
+        ```plaintext
+        keyboardLayout '<language>'
+        ```
+
+        **Example:**
+        ```plaintext
+        keyboardLayout 'German'
+        ```
+    </Tab>
+
+    <Tab value="terminal">
+        **Description:** Opens the terminal application for a specified operating system.
+
+        **Supported Values:**
+        - `windows`
+        - `linux`
+        - `mac`
+        - `ios`
+        - `android`
+
+        **Syntax:**
+        ```plaintext
+        terminal '<operating_system>'
+        ```
+
+        **Example:**
+        ```plaintext
+        terminal 'windows'
+        ```
+    </Tab>
+
+    <Tab value="mediaKey">
+        **Description:** Presses a media control key.
+
+        **Supported Keys:**
+        - `volup`, `voldown`, `mute`
+        - `playpause`, `nexttrack`, `prevtrack`, `stop`
+        - `calculator`, `email_reader`, `explorer`, `config`
+        - `brightness_up`, `brightness_down`
+        - `bass_up`, `bass_down`, `treble_up`, `treble_down`
+        - `radio_controls`, `radio_buttons`, `radio_led`, `radio_slider`
+        - `browser_home`, `browser_back`, `browser_forward`, `browser_refresh`, `browser_bookmarks`, `browser_stop`, `browser_search`
+        - `pan`
+
+        **Syntax:**
+        ```plaintext
+        mediaKey '<key_name>'
+        ```
+
+        **Example:**
+        ```plaintext
+        mediaKey 'playpause'
+        ```
+    </Tab>
+
+    <Tab value="systemKey">
+        **Description:** Presses a system control key.
+
+        **Supported Keys:**
+        - `power_off`, `standby`, `wake_host`
+
+        **Syntax:**
+        ```plaintext
+        systemKey '<key_name>'
+        ```
+
+        **Example:**
+        ```plaintext
+        systemKey 'screenshot'
+        ```
+    </Tab>
+</Tabs>
+
+## Utility Commands
+
+<Tabs items={["setDelay", "defaultdelay", "altcode", "jamKeys"]}>
+    <Tab value="setDelay">
+        **Description:** Sets a delay between keypresses.
+
+        **Syntax:**
+        ```plaintext
+        setDelay '<milliseconds>'
+        ```
+
+        **Example:**
+        ```plaintext
+        setDelay '50'
+        ```
+    </Tab>
+
+    <Tab value="defaultdelay">
+        **Description:** Sets a global delay that will be applied after each command execution.
+
+        **Syntax:**
+        ```plaintext
+        defaultdelay <milliseconds>
+        ```
+
+        **Example:**
+        ```plaintext
+        defaultdelay 100
+        ```
+
+        **Notes:**
+        - Affects all subsequent commands in the script
+        - Setting to 0 disables the default delay
+    </Tab>
+
+    <Tab value="altcode">
+        **Description:** Sends ALT code sequences or strings.
+
+        **Syntax:**
+        ```plaintext
+        altcode 'code' '<number>'  // For numeric ALT codes
+        altcode '<string>'       // For string input
+        ```
+
+        **Example:**
+        ```plaintext
+        altcode 'code 234'  // Types Û
+        altcode '™'         // Types trademark symbol
+        ```
+    </Tab>
+
+    <Tab value="jamKeys">
+        **Description:** Rapidly presses random keys (for testing or effects).
+
+        **Syntax:**
+        ```plaintext
+        jamKeys <duration> <interval>
+        ```
+
+        **Example:**
+        ```plaintext
+        jamKeys 5000 100  // Jams keys for 5 seconds every 100ms
+        ```
+    </Tab>
+</Tabs>

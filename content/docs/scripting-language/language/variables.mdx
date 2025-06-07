@@ -1,0 +1,117 @@
+---
+title: 🧩 Variables
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+Variables in ZeroTrace allow you to **store and reuse values**, making your scripts more dynamic and organized.
+
+Variables can contain:
+- **Static values** (like `true`, `admin`, `1234`)
+- **Operators** (dynamic data, e.g., random numbers)
+- **States** (system states, e.g., CapsLock on/off)
+
+## 📝 Variable Syntax Rules
+
+1. **Declaration** always starts with `_$VAR`
+2. **Assignment** uses `=` and **requires quotes** around the value
+3. **Usage** inside strings requires the syntax: `${variable}$`
+4. **Dynamic Content**: Variables can hold operators (`_$random()`) or states (`_@capslockState`)
+
+### Valid Usage:
+```plaintext
+# Static value
+_$VAR isAdmin = "true"
+writeLn "${isAdmin}$"
+```
+
+```
+# Operator inside variable
+_$VAR delayTime = "_$random(500, 1500)"
+delay "${delayTime}$"
+```
+
+```
+# State inside variable
+_$VAR capsStatus = "_@capslockState"
+writeLn "${capsStatus}$"
+```
+
+### Invalid Usage:
+```plaintext
+# Missing quotes around value
+_$VAR username = admin
+```
+
+```
+# Referencing without ${}$
+writeLn "$isAdmin"
+```
+
+```
+# Using variable without declaration
+writeLn "${undefinedVar}$"
+```
+
+## 🎯 Accessing Variable Values
+
+When you use a variable inside a string (`"${variable}$"`), it will:
+1. **Check global variables** for a match.
+2. If the value contains an **operator (`_$`)**, it will execute it dynamically.
+3. If the value contains a **state (`_@`)**, it will check the actual device/system state.
+
+---
+
+## 🔄 Supported States
+
+<Callout type="error">
+    **Usage** inside/between strings are not supported.
+</Callout>
+
+| State                | Description                    | Output         |
+|---------------------|--------------------------------|---------------|
+| `_@capslockState`   | CapsLock state                 | `ON` / `OFF`  |
+| `_@numlockState`    | NumLock state                  | `ON` / `OFF`  |
+| `_@scrolllockState` | ScrollLock state               | `ON` / `OFF`  |
+| `_@usbState`        | USB connection state           | `ON` / `OFF`  |
+
+### Valid Usage:
+```
+_$VAR capsStatus = "_@capslockState"
+writeLn "${capsStatus}$"
+```
+
+### Unsupported Usage:
+```
+_$VAR capsStatus = "_@capslockState"
+writeLn "Capslock Status is ${capsStatus}$"
+```
+---
+
+## 🧩 Practical Examples
+
+### Dynamic Delay
+```plaintext
+_$VAR delayTime = "_$random(500, 1500)"
+delay "${delayTime}$"
+```
+
+### Device State Check
+```plaintext
+_$VAR usbStatus = "_@usbState"
+writeLn "USB is: ${usbStatus}$"
+```
+
+### Combining Operators and Text
+```plaintext
+_$VAR username = "_$random(1, 100)"
+writeLn "Generated user: ${username}$"
+```
+
+<Callout type="info">
+    You can nest operators and states inside variables to create powerful dynamic scripts!
+</Callout>
+
+<Callout type="warn">
+    Important: Variables must have their values wrapped in quotes, and referenced with the correct syntax.
+</Callout>

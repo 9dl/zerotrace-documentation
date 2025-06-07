@@ -1,0 +1,184 @@
+---
+title: 🔢 Operators
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+ZeroTrace supports **dynamic operators** (prefixed with `_$`) and **variables** that can work together to create flexible, dynamic scripts.
+
+## 📝 Operator Syntax Rules
+
+1. **Standalone or in variables** - Can be used directly or assigned to variables
+2. **Always starts with `_$`** - Identifies it as an operator
+3. **Parentheses enclose arguments** - Required even for no-argument operators
+4. **Case-sensitive names** - Must match exactly as documented
+
+### Valid Usage:
+```plaintext
+# Direct usage
+writeLn _$random(1,100)
+
+# Variable assignment
+_$VAR randomNum = "_$random(1,100)"
+writeLn "${randomNum}$"
+```
+
+### Invalid Usage:
+```plaintext
+writeLn "Value: _$random(1,100)"  # Embedded in string
+writeLn _$Random(1,100)           # Incorrect case
+```
+
+## 🔢 Available Operators
+
+<Tabs items={["Random Values", "String Manipulation", "Character Generation"]}>
+    <Tab value="Random Values">
+        ### Random Number Generation
+
+        ```plaintext
+        _$random(from, to)  # Random integer between from and to
+        ```
+
+        **Example:**
+        Input: `_&random(1, 10)`
+        Output: `7` (random number between 1 and 10)
+
+        ```plaintext
+        _$random_number()  # Random digit (0-9)
+        ```
+
+        **Example:**
+        Input: `_&random_number()`
+        Output: `3`
+
+    </Tab>
+
+    <Tab value="String Manipulation">
+        ### String Operations
+
+        ```plaintext
+        _$uppercase(string)
+        ```
+
+        **Example:**
+        Input: `_&uppercase('admin')`
+        Output: `ADMIN`
+
+        ```plaintext
+        _$lowercase(string)
+        ```
+
+        **Example:**
+        Input: `_&lowercase('Admin')`
+        Output: `admin`
+
+        ```plaintext
+        _$reverse(string)
+        ```
+
+        **Example:**
+        Input: `_&reverse('admin')`
+        Output: `nimda`
+
+        ```plaintext
+        _$length(string)
+        ```
+
+        **Example:**
+        Input: `_&length('admin')`
+        Output: `5`
+
+        ```plaintext
+        _$concat(str1, str2)
+        ```
+
+        **Example:**
+        Input: `_&concat('user', '01')`
+        Output: `user01`
+
+        ```plaintext
+        _$substring(str, start, len)
+        ```
+
+        **Example:**
+        Input: `_&substring('password', 0, 4)`
+        Output: `pass`
+
+        ```plaintext
+        _$replace(str, target, repl)
+        ```
+
+        **Example:**
+        Input: `_&replace('admin123', '123', '456')`
+        Output: `admin456`
+
+    </Tab>
+
+    <Tab value="Character Generation">
+        ### Random Character Generation
+
+        ```plaintext
+        _$random_lowercase_letter()
+        ```
+
+        **Example:**
+        Output: `g`
+
+        ```plaintext
+        _$random_uppercase_letter()
+        ```
+
+        **Example:**
+        Output: `K`
+
+        ```plaintext
+        _$random_letter()
+        ```
+
+        **Example:**
+        Output: `R` or `h`
+
+        ```plaintext
+        _$random_special()
+        ```
+
+        **Example:**
+        Output: `!` or `#`
+
+        ```plaintext
+        _$random_char()
+        ```
+
+        **Example:**
+        Output: `4` or `@` or `q`
+    </Tab>
+</Tabs>
+
+## 🧩 Practical Examples
+
+### Dynamic Configuration
+```plaintext
+_$VAR ledR = "_$random(0,255)"
+_$VAR ledG = "_$random(0,255)"
+_$VAR ledB = "_$random(0,255)"
+ledColor "${ledR}$" "${ledG}$" "${ledB}$"
+```
+or
+```plaintext
+ledColor _$random(0,255) _$random(0,255) _$random(0,255)
+```
+
+<Callout type="info">
+    💡 Pro Tip: Combine variables and operators to create dynamic, adaptable scripts that change behavior each run!
+</Callout>
+
+<Callout type="warn">
+    Important: When using operators in variables:
+    1. Wrap the operator in quotes for assignment
+    2. Use `${variable}$` syntax when referencing
+    3. Operators still can't be embedded in normal strings
+    4. ❗ **You cannot nest random operators inside each other.**
+    For example: `_&random(1, _&random(2,5))` is invalid.
+    Always use separate variables instead.
+</Callout>

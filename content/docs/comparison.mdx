@@ -1,0 +1,65 @@
+---
+title: ⚖️ ZeroTrace vs. Rubber Ducky
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs'
+import { Callout } from 'fumadocs-ui/components/callout';
+
+Is **ZeroTrace** the ultimate **HID injection tool**? Here’s a data-driven breakdown comparing it to the classic **Hak5 Rubber Ducky**, using real specs, features, and current documentation for both platforms.
+
+---
+
+## 🛠 Feature Breakdown
+
+| Feature                         | 🦆 **Rubber Ducky**        | 🕵️ **ZeroTrace**                               |
+|---------------------------------|----------------------------|-------------------------------------------------|
+| **Device Type**                 | HID Injection              | HID & BLE Injection                             |
+| **Web UI**                      | ❌ No                       | ✅ Yes (cross-platform, real-time editing)       |
+| **Live Payload Editing**        | ❌ No                       | ✅ Yes (no reflash, edit/run instantly)          |
+| **Keystroke Injection Speed**   | ⚡ Fast (configurable)      | ⚡ Fast (configurable)                           |
+| **Scripting Language**          | Ducky Script               | ZT Script                                       |
+| **WiFi Connectivity**           | ❌ No                       | ✅ Yes (AP, STA, easy setup)                     |
+| **Bluetooth HID Mode**          | ❌ No                       | ✅ Yes (Automatic Switching)                     |
+| **Remote Execution**            | ❌ No                       | ✅ Yes (Web UI, trigger from anywhere)           |
+| **Multi-Script Support**        | ❌ No (single script)       | ✅ Yes (multi-payload, hot swap, file manager)   |
+| **Self-Destruct Mode**          | ❌ No                       | ✅ Yes (wipe storage instantly)                  |
+| **HID Spoofing**                | ⚠️ Limited (keyboard only) | ✅ Yes (keyboard, mouse, mass-storage, printer)  |
+| **Mouse Automation**            | ❌ No                       | ✅ Yes (mouseMove, mouseDraw, mouseJitter, etc.) |
+| **Brute Force Tools**           | ❌ No                       | ✅ Yes (PIN brute, password brute, config opts)  |
+| **Scripting Blocks/Conditions** | ✅ Yes                      | ✅ Yes (if/else, repeat, blocks, variables)      |
+| **Live Execution**              | ❌ No                       | ✅ Yes (real-time log in Web UI)                 |
+| **Storage**                     | Onboard, SD Card           | Onboard (10mb)                                  |
+| **Price**                       | 💰 $130+                   | 💸 24,85€ (≈$27)                                |
+
+---
+
+## 📝 Ducky Script vs. ZT Script
+
+ZeroTrace uses **ZT Script**: a modern, extensible scripting language with more features, structure, and clarity.
+
+<Tabs items={['Ducky Script', 'ZT Script']}>
+    <Tab value="Ducky Script">
+        Example payload:
+        ```text
+        DELAY 1000
+        STRING Hello, world!
+        ENTER
+        ```
+    </Tab>
+    <Tab value="ZT Script">
+        Example payload:
+        ```text
+        delay 1000
+        writeLn "Hello, world!"
+        ```
+    </Tab>
+</Tabs>
+
+✅ **ZT Script** offers better readability, modular commands, variables, blocks, conditions, and supports advanced automation.
+
+---
+
+## 💡 Conclusion
+
+**ZeroTrace** is the most advanced, cost-effective HID injection platform available—outpacing Rubber Ducky in every major category, from remote control and scripting to security, storage, and ease of use.
+Upgrade for next-level automation, research, and red teaming.

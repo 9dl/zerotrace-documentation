@@ -1,0 +1,58 @@
+---
+title: 💬 Comments
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+Comments in ZeroTrace scripts let you **add notes or explanations** to your code without affecting how it runs. Use comments to make your scripts clearer for yourself and others!
+
+## ✏️ Comment Syntax Rules
+
+You can write comments in several ways:
+
+1. **Official Comments**  
+Use `#` or `//` at the start of a line
+Use '//' for inline comments
+
+```plaintext
+# This is a comment
+// This is also a comment
+writeLn "Hello" // This is an inline comment
+delay "1000" # Another inline comment
+````
+
+2. **Freestyle Comments**
+You can write anything on a new line, as long as it **doesn't get detected as a command**.
+For example:
+
+```plaintext
+This is just a note and will be ignored by the interpreter
+```
+
+<Callout type="warn">
+    If your comment looks like a command (e.g., starts with known keywords like `writeLn`, `delay`, etc.), it **will be executed**. So, avoid using command-like phrases for freestyle comments!
+</Callout>
+
+## ✅ Valid Usage
+
+```plaintext
+# This script prints a message
+writeLn "Hello, World!" // Inline comment
+
+// Wait before next command
+delay "1000"
+
+This is a freestyle comment explaining what happens next
+_$VAR isAdmin = "true"
+```
+
+## ❌ Invalid Usage
+
+```plaintext
+writeLn "Test" This looks like a command and may cause errors
+writeLn "Test" # This looks like a command and may cause errors
+```
+
+<Callout type="info">
+    Use comments to make your scripts easier to understand. Official comments (`#` or `//`) are recommended for clarity. Freestyle comments work too—just don’t make them look like commands!
+</Callout>

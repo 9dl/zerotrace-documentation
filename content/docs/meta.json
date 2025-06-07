@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "pages": [
+    "---Overview---",
+    "index",
+    "features",
+    "comparison",
+    "---Getting Started---",
+    "installation",
+    "setup",
+    "usage",
+    "web-ui",
+    "desktop-app",
+    "compatibility",
+    "---Usage & Scripting---",
+    "scripting-language/hid",
+    "scripting-language/ble",
+    "scripting-language/language",
+    "---Development & Support---",
+    "llm",
+    "license",
+    "tracking"
+  ]
+}

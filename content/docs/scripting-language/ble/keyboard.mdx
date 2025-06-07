@@ -1,0 +1,169 @@
+---
+title: ⌨️ Keyboard Commands
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+## Text Input Commands
+
+<Tabs items={["write", "writeLn"]}>
+    <Tab value="write">
+        **Description:** Prints the provided text as keyboard input.
+
+        **Syntax:**
+        ```plaintext
+        write '<text>'
+        ```
+
+        **Example:**
+        ```plaintext
+        write 'Hello, World!'
+        ```
+    </Tab>
+
+    <Tab value="writeLn">
+        **Description:** Prints the provided text followed by pressing `Enter`.
+
+        **Syntax:**
+        ```plaintext
+        writeLn '<text>'
+        ```
+
+        **Example:**
+        ```plaintext
+        writeLn 'Hello, World!'
+        ```
+    </Tab>
+</Tabs>
+
+## Key Press Commands
+
+<Tabs items={["key", "comboKey", "arrowKey"]}>
+    <Tab value="key">
+        **Description:** Presses and releases a specific keyboard key. Optionally, you can specify whether to hold or release the key.
+
+        **Supported Keys:**
+        - **Modifiers:** `ctrl`, `shift`, `alt`, `gui`
+        - **Arrow Keys:** `up`, `down`, `left`, `right`
+        - **Function Keys:** `F1` to `F24`
+        - **Special Keys:** `enter`, `esc`, `backspace`, `space`, `tab`, `delete`, `insert`, `home`, `end`, `pageup`, `pagedown`, `capslock`
+        - **Numpad Keys:** `num0`, `num1`, `num2`, `num3`, `num4`, `num5`, `num6`, `num7`, `num8`, `num9`, `numslash`, `numasterisk`, `numminus`, `numplus`, `numenter`, `numperiod`
+        - **Media Keys:** `volup`, `voldown`, `mute`, `playpause`, `nexttrack`, `prevtrack`, `stop`, `www_home`, `local_machine_browser`, `calculator`, `www_bookmarks`, `www_search`, `www_stop`, `www_back`, `consumer_control_configuration`, `email_reader`
+        - **Single Characters:** Any single character (e.g., `a`, `b`, `1`, etc.)
+
+        **Syntax:**
+        ```plaintext
+        key '<key_name>' [<action>]
+        ```
+
+        **Example:**
+        ```plaintext
+        key 'esc'
+        key 'ctrl' hold
+        key 'ctrl' release
+        ```
+    </Tab>
+
+    <Tab value="comboKey">
+        **Description:** Simulates pressing multiple keys simultaneously.
+
+        **Syntax:**
+        ```plaintext
+        comboKey '<key1+key2+...>'
+        ```
+
+        **Example:**
+        ```plaintext
+        comboKey 'ctrl+shift+esc'
+        comboKey 'alt+tab'
+        ```
+    </Tab>
+
+    <Tab value="arrowKey">
+        **Description:** Presses an arrow key (`up`, `down`, `left`, or `right`).
+
+        **Syntax:**
+        ```plaintext
+        arrowKey '<direction>'
+        ```
+
+        **Example:**
+        ```plaintext
+        arrowKey 'left'
+        arrowKey 'down'
+        ```
+    </Tab>
+</Tabs>
+
+## System Control Commands
+
+<Tabs items={["keyboardLayout", "terminal"]}>
+    <Tab value="keyboardLayout">
+        **Description:** Changes the keyboard layout to a specified language.
+
+        **Supported Layouts:** `German`, `SwissGerman`, `English_UK`, `French`, `Spanish`, `Portuguese`, `Portuguese_BR`, `Italian`, `Danish`, `Swedish`, `Turkish`, `Chinese`, `Japanese`, `Korean`, `Russian`, `Arabic`, `Hindi`, `Polish`, `Dutch`, `English` (default)
+
+        **Syntax:**
+        ```plaintext
+        keyboardLayout '<language>'
+        ```
+
+        **Example:**
+        ```plaintext
+        keyboardLayout 'German'
+        ```
+    </Tab>
+
+    <Tab value="terminal">
+        **Description:** Opens the terminal application for a specified operating system.
+
+        **Supported Values:**
+        - `windows`
+        - `linux`
+        - `mac`
+        - `ios`
+        - `android`
+
+        **Syntax:**
+        ```plaintext
+        terminal '<operating_system>'
+        ```
+
+        **Example:**
+        ```plaintext
+        terminal 'windows'
+        ```
+    </Tab>
+</Tabs>
+
+## Device Control
+
+<Tabs items={["setDelay", "setBattery"]}>
+    <Tab value="setDelay">
+        **Description:** Sets a delay between keypresses.
+
+        **Syntax:**
+        ```plaintext
+        setDelay '<milliseconds>'
+        ```
+
+        **Example:**
+        ```plaintext
+        setDelay '50'
+        ```
+    </Tab>
+
+    <Tab value="setBattery">
+        **Description:** Sets reported BLE battery level.
+
+        **Syntax:**
+        ```plaintext
+        setBattery <level>
+        ```
+
+        **Example:**
+        ```plaintext
+        setBattery 75
+        ```
+    </Tab>
+</Tabs>

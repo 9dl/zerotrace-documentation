@@ -1,0 +1,217 @@
+---
+title: ⚙️ Utility Commands
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+## Utility Commands
+
+<Tabs items={["delay", "defaultdelay", "repeat", "bruteForce"]}>
+    <Tab value="delay">
+        **Description:** Waits for a specified time before running the next command.
+
+        **Syntax:**
+        ```plaintext
+        delay '<milliseconds>'
+        ```
+
+        **Example:**
+        ```plaintext
+        delay '250'
+        ```
+    </Tab>
+
+    <Tab value="defaultdelay">
+        **Description:** Sets a global delay that is added after each command.
+
+        **Syntax:**
+        ```plaintext
+        defaultdelay <milliseconds>
+        ```
+
+        **Example:**
+        ```plaintext
+        defaultdelay 100
+        ```
+    </Tab>
+
+    <Tab value="repeat">
+        **Description:** Repeats a block of commands a specified number of times.
+
+        **Syntax:**
+        ```plaintext
+        repeatStart <count>
+        <commands>
+            repeatEnd
+            ```
+
+            **Example:**
+            ```plaintext
+            repeatStart 3
+            writeLn 'Repeat this line'
+            repeatEnd
+            ```
+    </Tab>
+
+    <Tab value="bruteForce">
+        **Description:** Runs a brute force routine with custom parameters.
+
+        **Syntax:**
+        ```plaintext
+        bruteForce <range> <delay> <newLine> <useUsername> <username> <useJitterDelay> <useCharSet> <charSet>
+        ```
+
+        **Example:**
+        ```plaintext
+        bruteForce 4 100 true false '' false true 'abcd'
+        ```
+    </Tab>
+</Tabs>
+
+## LED Control
+
+<Tabs items={["ledColor", "ledBlink", "ledOff", "ledBrightness"]}>
+    <Tab value="ledColor">
+        **Description:** Sets the color of the device's LED.
+
+        **Syntax:**
+        ```plaintext
+        ledColor <r> <g> <b>
+        ```
+
+        **Example:**
+        ```plaintext
+        ledColor 255 0 0
+        ```
+    </Tab>
+
+    <Tab value="ledBlink">
+        **Description:** Makes the device LED blink.
+
+        **Syntax:**
+        ```plaintext
+        ledBlink <r> <g> <b> <delay> <count>
+        ```
+
+        **Example:**
+        ```plaintext
+        ledBlink 0 255 0 100 5
+        ```
+    </Tab>
+
+    <Tab value="ledOff">
+        **Description:** Turns the LED off.
+
+        **Syntax:**
+        ```plaintext
+        ledOff
+        ```
+
+        **Example:**
+        ```plaintext
+        ledOff
+        ```
+    </Tab>
+
+    <Tab value="ledBrightness">
+        **Description:** Sets the LED brightness.
+
+        **Syntax:**
+        ```plaintext
+        ledBrightness <level>
+        ```
+
+        **Example:**
+        ```plaintext
+        ledBrightness 128
+        ```
+    </Tab>
+</Tabs>
+
+## Device & System Control
+
+<Tabs items={["selfDestruct", "formatStorage", "reboot", "watchdog", "stateChange", "reconMode"]}>
+    <Tab value="selfDestruct">
+        **Description:** Securely destroys data and disables the device.
+
+        **Syntax:**
+        ```plaintext
+        selfDestruct
+        ```
+
+        **Example:**
+        ```plaintext
+        selfDestruct
+        ```
+    </Tab>
+
+    <Tab value="formatStorage">
+        **Description:** Formats (erases) the device storage.
+
+        **Syntax:**
+        ```plaintext
+        formatStorage
+        ```
+
+        **Example:**
+        ```plaintext
+        formatStorage
+        ```
+    </Tab>
+
+    <Tab value="reboot">
+        **Description:** Reboots the device.
+
+        **Syntax:**
+        ```plaintext
+        reboot
+        ```
+
+        **Example:**
+        ```plaintext
+        reboot
+        ```
+    </Tab>
+
+    <Tab value="watchdog">
+        **Description:** Runs the WiFi watchdog/geolocation routine.
+
+        **Syntax:**
+        ```plaintext
+        watchdog '<ssid>' <maxRetries> <retryDelay> <executionDelay>
+        ```
+
+        **Example:**
+        ```plaintext
+        watchdog 'MyWiFi' 5 10 60
+        ```
+    </Tab>
+
+    <Tab value="stateChange">
+        **Description:** Triggers a state change event.
+
+        **Syntax:**
+        ```plaintext
+        stateChange '<key>'
+        ```
+
+        **Example:**
+        ```plaintext
+        stateChange 'payload_started'
+        ```
+    </Tab>
+
+    <Tab value="reconMode">
+        **Description:** Enables or disables recon mode.
+
+        **Syntax:**
+        ```plaintext
+        reconMode '<true|false>'
+        ```
+
+        **Example:**
+        ```plaintext
+        reconMode 'true'
+        ```
+    </Tab>
+</Tabs>

@@ -1,0 +1,255 @@
+---
+title: 🎮 Gamepad Commands
+---
+
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+## Gamepad Controls
+
+### Supported Buttons
+| Button Name | Aliases | Description |
+|-------------|---------|-------------|
+| `A` | `SOUTH` | Primary action button |
+| `B` | `EAST` | Secondary action button |
+| `C` | - | Tertiary action button |
+| `X` | `NORTH` | Auxiliary button 1 |
+| `Y` | `WEST` | Auxiliary button 2 |
+| `Z` | - | Auxiliary button 3 |
+| `TL` | - | Top left shoulder button |
+| `TR` | - | Top right shoulder button |
+| `TL2` | - | Left trigger (analog) |
+| `TR2` | - | Right trigger (analog) |
+| `SELECT` | - | Select/back button |
+| `START` | - | Start/menu button |
+| `MODE` | - | Home/guide button |
+| `THUMBL` | - | Left thumbstick click |
+| `THUMBR` | - | Right thumbstick click |
+
+### D-Pad (Hat) Positions
+| Position | Description |
+|----------|-------------|
+| `CENTER` | Neutral position |
+| `UP` | Up direction |
+| `UP_RIGHT` | Up-right diagonal |
+| `RIGHT` | Right direction |
+| `DOWN_RIGHT` | Down-right diagonal |
+| `DOWN` | Down direction |
+| `DOWN_LEFT` | Down-left diagonal |
+| `LEFT` | Left direction |
+| `UP_LEFT` | Up-left diagonal |
+
+## Basic Controls
+
+<Tabs items={["pressButton", "releaseButton", "tapButton", "hat"]}>
+    <Tab value="pressButton">
+        **Description:** Presses and holds a gamepad button.
+
+        **Syntax:**
+        ```plaintext
+        pressButton '<button>'
+        ```
+
+        **Example:**
+        ```plaintext
+        pressButton 'A'
+        pressButton 'TL'
+        ```
+    </Tab>
+
+    <Tab value="releaseButton">
+        **Description:** Releases a pressed gamepad button.
+
+        **Syntax:**
+        ```plaintext
+        releaseButton '<button>'
+        ```
+
+        **Example:**
+        ```plaintext
+        releaseButton 'B'
+        ```
+    </Tab>
+
+    <Tab value="tapButton">
+        **Description:** Presses and releases a button with specified delay.
+
+        **Syntax:**
+        ```plaintext
+        tapButton '<button>' <delayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        tapButton 'X' 200  // Press X for 200ms
+        ```
+    </Tab>
+
+    <Tab value="hat">
+        **Description:** Sets D-Pad (hat) position.
+
+        **Syntax:**
+        ```plaintext
+        hat '<position>'
+        ```
+
+        **Example:**
+        ```plaintext
+        hat 'UP_LEFT'
+        hat 'CENTER'  // Returns to neutral
+        ```
+    </Tab>
+</Tabs>
+
+## Advanced Controls
+
+<Tabs items={["leftStick", "rightStick", "leftTrigger", "rightTrigger", "comboPress", "comboRelease"]}>
+    <Tab value="leftStick">
+        **Description:** Sets left analog stick position (-127 to 127).
+
+        **Syntax:**
+        ```plaintext
+        leftStick <x> <y>
+        ```
+
+        **Example:**
+        ```plaintext
+        leftStick 100 0    // Full right
+        leftStick 0 -100   // Full up
+        leftStick 0 0      // Center
+        ```
+    </Tab>
+
+    <Tab value="rightStick">
+        **Description:** Sets right analog stick position (-127 to 127).
+
+        **Syntax:**
+        ```plaintext
+        rightStick <x> <y>
+        ```
+
+        **Example:**
+        ```plaintext
+        rightStick -50 50  // Diagonal left-down
+        ```
+    </Tab>
+
+    <Tab value="leftTrigger">
+        **Description:** Sets left trigger value (0-255).
+
+        **Syntax:**
+        ```plaintext
+        leftTrigger <value>
+        ```
+
+        **Example:**
+        ```plaintext
+        leftTrigger 255  // Full press
+        ```
+    </Tab>
+
+    <Tab value="rightTrigger">
+        **Description:** Sets right trigger value (0-255).
+
+        **Syntax:**
+        ```plaintext
+        rightTrigger <value>
+        ```
+
+        **Example:**
+        ```plaintext
+        rightTrigger 128  // Half press
+        ```
+    </Tab>
+
+    <Tab value="comboPress">
+        **Description:** Presses multiple buttons simultaneously.
+
+        **Syntax:**
+        ```plaintext
+        comboPress '<button1,button2,...>'
+        ```
+
+        **Example:**
+        ```plaintext
+        comboPress 'A,B'      // A+B combo
+        comboPress 'TL,TR'    // Both shoulder buttons
+        ```
+    </Tab>
+
+    <Tab value="comboRelease">
+        **Description:** Releases all pressed buttons.
+
+        **Syntax:**
+        ```plaintext
+        comboRelease
+        ```
+
+        **Example:**
+        ```plaintext
+        comboPress 'X,Y'
+        delay 1000
+        comboRelease
+        ```
+    </Tab>
+</Tabs>
+
+## Special Functions
+
+<Tabs items={["rapidFire", "sweepSticks", "tapDpad", "reset"]}>
+    <Tab value="rapidFire">
+        **Description:** Rapidly taps a button multiple times.
+
+        **Syntax:**
+        ```plaintext
+        rapidFire '<button>' <times> <intervalMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        rapidFire 'A' 10 100  // Press A 10 times with 100ms intervals
+        ```
+    </Tab>
+
+    <Tab value="sweepSticks">
+        **Description:** Moves sticks in circular pattern.
+
+        **Syntax:**
+        ```plaintext
+        sweepSticks <amplitude> <steps> <delayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        sweepSticks 100 36 50  // Full circle with 36 steps
+        ```
+    </Tab>
+
+    <Tab value="tapDpad">
+        **Description:** Briefly presses D-Pad direction.
+
+        **Syntax:**
+        ```plaintext
+        tapDpad '<direction>' <delayMs>
+        ```
+
+        **Example:**
+        ```plaintext
+        tapDpad 'UP' 300  // Hold up for 300ms
+        ```
+    </Tab>
+
+    <Tab value="reset">
+        **Description:** Resets all controls to neutral state.
+
+        **Syntax:**
+        ```plaintext
+        reset
+        ```
+
+        **Example:**
+        ```plaintext
+        reset  // Centers sticks and releases all buttons
+        ```
+    </Tab>
+</Tabs>

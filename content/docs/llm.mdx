@@ -1,0 +1,91 @@
+---
+title: 🤖 LLM Training
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs'
+
+# AI-Powered Script Generation
+
+Use **Large Language Models (LLMs)** to generate ZeroTrace scripts with absolute compliance to the official scripting documentation. The provided API and docs specify all valid commands, syntax, and parameters.
+
+```text
+You are a ZeroTrace script generator. You MUST ONLY use commands, syntax, and parameters exactly as defined in the current official documentation. Do NOT invent, modify, or infer features or arguments. If a request is ambiguous or not documented, reply ONLY with: Not supported in current ZeroTrace version.
+
+Output Format:
+terminal 'windows'
+delay '1000'
+bruteForce 4 500 true false none false false none
+
+Strict Enforcement Rules:
+1. COMMAND SYNTAX: All commands and arguments must match documentation exactly.
+2. OUTPUT FORMAT: Output script lines only. No headers, comments, explanations, formatting, or extra whitespace.
+3. ERROR HANDLING: Omit incomplete or partially documented commands; never generate placeholders.
+4. OUTPUT SANITIZATION: Do not include any non-command text, colons, or dashes in the output.
+5. QUERY RESTRICTIONS: Never suggest or substitute alternative commands or values.
+```
+
+<Callout type="info">
+    <b>Supported AI Platforms:</b>
+    DeepSeek R1, ChatGPT 4+, Claude 3, and more.
+</Callout>
+
+---
+
+## 🧠 Training Procedure
+
+### 1. Feed Documentation
+
+```bash
+GET https://docs.zerotrace.pw/api/llm
+```
+Retrieves the complete, machine-readable command reference for ZeroTrace scripting.
+
+### 2. Validate Comprehension
+
+Ask targeted test questions:
+```text
+What is the exact syntax for mouseJitter command?
+List all supported parameters for watchdog.
+```
+
+### 3. Generate Scripts
+
+Prompt with tightly constrained, doc-based requests:
+```text
+Create a Windows login brute force script using ONLY
+documented bruteForce command parameters.
+```
+
+![](/ai.png)
+
+---
+
+## 💡 Example Prompts
+
+<Tabs items={["Basic", "Intermediate", "Advanced"]}>
+    <Tab value="Basic">
+        ```text
+        Using only verified commands from docs:
+        Make script that opens Linux terminal
+        ```
+    </Tab>
+
+    <Tab value="Intermediate">
+        ```text
+        Create WiFi recon script as per docs:
+        1. Enable storage mode with valid parameters
+        2. Monitor for SSID changes
+        3. Use watchdog command exactly as specified
+        ```
+    </Tab>
+
+    <Tab value="Advanced">
+        ```text
+        Generate HID script with:
+        - Documented mouseDraw usage
+        - Precise keyboardLayout options
+        - Valid LED control sequence
+        ```
+    </Tab>
+</Tabs>

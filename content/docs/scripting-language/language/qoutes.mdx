@@ -1,0 +1,23 @@
+---
+title: 📝 Quotes
+---
+
+### Quote Types
+
+| Style         | Example                       | Use Case                    |
+|---------------|------------------------------|-----------------------------|
+| `"double"`    | `writeLn "multi word text"`  | Standard text, phrases      |
+| `'single'`    | `writeLn 'another value'`    | Alternate quoting           |
+| `` `back` ``  | ``writeLn `special$chars` `` | Code, commands, symbols     |
+
+- Quotes can be **double** (`"`), **single** (`'`), or **backtick** (`` ` ``).
+- Any argument can be enclosed in quotes.
+- Quotes preserve spaces and special characters inside them.
+- Use backticks for input that may contain both `'` and `"` or lots of symbols.
+
+**Examples:**
+```plaintext
+writeLn "Hello world"
+writeLn 'Single quoted value'
+writeLn `echo "complex $EXPR"`
+```

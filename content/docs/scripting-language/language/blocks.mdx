@@ -1,0 +1,66 @@
+---
+title: 🏗️ Blocks
+---
+
+## Block Syntax
+
+Blocks allow you to group and repeat multiple lines or commands in scripts.
+
+---
+
+### Block Types
+| Block               | Start Command              | End Command          | Description                                                                 |
+|:--------------------|:---------------------------|:---------------------|:----------------------------------------------------------------------------|
+| **Write**           | `writeStart`               | `writeEnd`           | Types each line as keyboard input                                           |
+| **WriteLn**         | `writeLnStart`             | `writeLnEnd`         | Types each line and presses Enter after                                     |
+| **Repeat**          | `repeatStart <n>`          | `repeatEnd`          | Repeats enclosed commands n times                                           |
+| **AccurateWrite**   | `accurateWriteStart <n>`   | `accurateWriteEnd`   | Types each line with increased accuracy (n = delay in ms) (only HID)        |
+| **AccurateWriteLn** | `accurateWriteLnStart <n>` | `accurateWriteLnEnd` | Types each line with Enter, increased accuracy (n = delay in ms) (only HID) |
+
+---
+
+### Usage Examples
+
+#### Write Block
+
+```plaintext
+writeStart
+First line
+Second line
+writeEnd
+```
+
+#### WriteLn Block
+
+```plaintext
+writeLnStart
+Line one
+Line two
+writeLnEnd
+```
+
+#### Repeat Block
+
+```plaintext
+repeatStart 3
+writeLn "Repeat me"
+write "and me"
+repeatEnd
+```
+
+#### AccurateWrite Block
+
+```plaintext
+accurateWriteStart
+First line
+Second line
+accurateWriteEnd
+```
+#### AccurateWriteLn Block
+
+```plaintext
+accurateWriteLnStart 10
+Line one
+Line two
+accurateWriteLnEnd
+```
