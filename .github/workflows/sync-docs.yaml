@@ -1,0 +1,41 @@
+name: Sync docs to private repo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # manual trigger
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v3
+
+      - name: Clone private repo
+        run: |
+          git clone --depth=1 https://x-access-token:${{ secrets.PRIVATE_REPO_TOKEN }}@github.com/9dl/zerotrace-docs.git private
+
+      - name: Sync docs from public to private
+        run: |
+          rm -rf private/content/docs
+          mkdir -p private/content
+          cp -r docs private/content/docs
+
+      - name: Commit and force push to private repo
+        working-directory: private
+        env:
+          GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          git add content/docs
+          if ! git diff --cached --quiet; then
+            git commit -m "Mirror docs from public repo"
+            git push https://x-access-token:${GH_TOKEN}@github.com/9dl/zerotrace-docs.git main --force
+          else
+            echo "No changes detected in docs, skipping push."
+          fi
