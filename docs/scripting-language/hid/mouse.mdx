@@ -4,11 +4,184 @@ title: 🖱️ Mouse Commands
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import {Callout} from "fumadocs-ui/components/callout";
 
+## Relative Mouse Commands
+<Callout type="default">
+    - **Movement Range:** Movement values for X and Y are limited to \-32767 to 32767
+    - **Scroll Range:** Scroll values are limited to \-127 to 127
+</Callout>
+<Tabs items={["mouseMove", "mouseClick", "mouseDoubleClick", "mouseDragDrop", "mouseScroll", "mouseScrollPattern"]}>
+    <Tab value="mouseMove">
+        **Description:** Moves the mouse cursor relative to current position.
+
+        **Syntax:**
+        ```plaintext
+        mouseMove <x> <y>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseMove 50 -30
+        ```
+    </Tab>
+
+    <Tab value="mouseClick">
+        **Description:** Clicks the specified mouse button.
+
+        **Syntax:**
+        ```plaintext
+        mouseClick '<key_name>' '[<action>]'
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseClick right
+        mouseClick right hold
+        mouseClick right release
+        ```
+    </Tab>
+
+    <Tab value="mouseDoubleClick">
+        **Description:** Double clicks the specified mouse button.
+
+        **Syntax:**
+        ```plaintext
+        mouseDoubleClick <button>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseDoubleClick left
+        ```
+    </Tab>
+
+    <Tab value="mouseDragDrop">
+        **Description:** Drags from current position and drops at relative coordinates.
+
+        **Syntax:**
+        ```plaintext
+        mouseDragDrop <x> <y> <button>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseDragDrop 100 50 left
+        ```
+    </Tab>
+
+    <Tab value="mouseScroll">
+        **Description:** Scrolls the mouse wheel.
+
+        **Syntax:**
+        ```plaintext
+        mouseScroll <amount>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseScroll 5   // Scroll up
+        mouseScroll -3  // Scroll down
+        ```
+    </Tab>
+
+    <Tab value="mouseScrollPattern">
+        **Description:** Scrolls in a pattern (up/down repeatedly).
+
+        **Syntax:**
+        ```plaintext
+        mouseScrollPattern <amount> <cycles> <stepDelay>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseScrollPattern 5 3 100  // Scroll up 5, down 5, up 5 (3 cycles) with 100ms delay
+        ```
+    </Tab>
+</Tabs>
+
+## Advanced Relative Mouse Commands
+
+<Tabs items={["mouseJitter", "mouseLock", "mouseSpiral", "mouseDrawCircle", "mouseMoveCorner"]}>
+    <Tab value="mouseJitter">
+        **Description:** Creates random mouse movements (jitter effect).
+
+        **Syntax:**
+        ```plaintext
+        mouseJitter <duration> <posDelay> <mouseClick> <mouseButton>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseJitter 5000 100 true left
+        ```
+    </Tab>
+
+    <Tab value="mouseLock">
+        **Description:** Locks mouse cursor in position for duration.
+
+        **Syntax:**
+        ```plaintext
+        mouseLock <duration>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseLock 3000
+        ```
+    </Tab>
+
+    <Tab value="mouseSpiral">
+        **Description:** Moves mouse in a spiral pattern.
+
+        **Syntax:**
+        ```plaintext
+        mouseSpiral <radius> <turns> <stepDelay>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseSpiral 100 3 50
+        ```
+    </Tab>
+
+    <Tab value="mouseDrawCircle">
+        **Description:** Draws a circle with mouse movements.
+
+        **Syntax:**
+        ```plaintext
+        mouseDrawCircle <radius> <segments> <stepDelay>
+        ```
+
+        **Example:**
+        ```plaintext
+        mouseDrawCircle 50 36 20
+        ```
+    </Tab>
+
+    <Tab value="mouseMoveCorner">
+        **Description:** Moves mouse to screen corner.
+
+        **Syntax:**
+        ```plaintext
+        mouseMoveCorner <corner>
+        ```
+
+        **Supported Corners:**
+        - `top-left`
+        - `top-right`
+        - `bottom-left`
+        - `bottom-right`
+        - `center`
+
+        **Example:**
+        ```plaintext
+        mouseMoveCorner top-right
+        ```
+    </Tab>
+</Tabs>
+
 ## Absolute Mouse Commands
 <Callout type="info">
-    - Windows: Ignores absolute values, only processes relative.
-    - Linux/macOS: Supports absolute values for mice.
-    - ^ Note: Absolute mouse commands may not work on all systems, especially Windows. It's recommended to use relative commands for better compatibility.
+    - Absolute mouse commands may not work on all systems, especially Windows. It's recommended to use relative commands for better compatibility.
 </Callout>
 <Tabs items={["moveAbs", "moveHoldAbs", "clickAbs", "doubleClickAbs", "dragDropAbs", "autoClickerAbs"]}>
     <Tab value="moveAbs">
@@ -105,181 +278,6 @@ import {Callout} from "fumadocs-ui/components/callout";
         **Example:**
         ```plaintext
         autoClickerAbs left 10 5000 true 5
-        ```
-    </Tab>
-</Tabs>
-
-## Relative Mouse Commands
-<Callout type="default">
-    - **Movement Range:** Movement values for X and Y are limited to \-32767 to 32767
-    - **Scroll Range:** Scroll values are limited to \-127 to 127
-</Callout>
-<Tabs items={["mouseMove", "mouseClick", "mouseDoubleClick", "mouseDragDrop", "mouseScroll", "mouseScrollPattern"]}>
-    <Tab value="mouseMove">
-        **Description:** Moves the mouse cursor relative to current position.
-
-        **Syntax:**
-        ```plaintext
-        mouseMove <x> <y>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseMove 50 -30
-        ```
-    </Tab>
-
-    <Tab value="mouseClick">
-        **Description:** Clicks the specified mouse button.
-
-        **Syntax:**
-        ```plaintext
-        mouseClick '<key_name>' '[<action>]'
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseClick right
-        mouseClick right hold
-        mouseClick right release
-        ```
-    </Tab>
-
-    <Tab value="mouseDoubleClick">
-        **Description:** Double clicks the specified mouse button.
-
-        **Syntax:**
-        ```plaintext
-        mouseDoubleClick <button>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseDoubleClick left
-        ```
-    </Tab>
-
-    <Tab value="mouseDragDrop">
-        **Description:** Drags from current position and drops at relative coordinates.
-
-        **Syntax:**
-        ```plaintext
-        mouseDragDrop <x> <y> <button>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseDragDrop 100 50 left
-        ```
-    </Tab>
-
-    <Tab value="mouseScroll">
-        **Description:** Scrolls the mouse wheel.
-
-        **Syntax:**
-        ```plaintext
-        mouseScroll <amount>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseScroll 5   // Scroll up
-        mouseScroll -3  // Scroll down
-        ```
-    </Tab>
-
-    <Tab value="mouseScrollPattern">
-        **Description:** Scrolls in a pattern (up/down repeatedly).
-
-        **Syntax:**
-        ```plaintext
-        mouseScrollPattern <amount> <cycles> <stepDelay>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseScrollPattern 5 3 100  // Scroll up 5, down 5, up 5 (3 cycles) with 100ms delay
-        ```
-    </Tab>
-</Tabs>
-
-## Advanced Mouse Commands
-
-<Tabs items={["mouseJitter", "mouseLock", "mouseSpiral", "mouseDrawCircle", "mouseMoveCorner"]}>
-    <Tab value="mouseJitter">
-        **Description:** Creates random mouse movements (jitter effect).
-
-        **Syntax:**
-        ```plaintext
-        mouseJitter <duration> <posDelay> <mouseClick> <mouseButton>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseJitter 5000 100 true left
-        ```
-    </Tab>
-
-    <Tab value="mouseLock">
-        **Description:** Locks mouse cursor in position for duration.
-
-        **Syntax:**
-        ```plaintext
-        mouseLock <duration>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseLock 3000
-        ```
-    </Tab>
-
-    <Tab value="mouseSpiral">
-        **Description:** Moves mouse in a spiral pattern.
-
-        **Syntax:**
-        ```plaintext
-        mouseSpiral <radius> <turns> <stepDelay>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseSpiral 100 3 50
-        ```
-    </Tab>
-
-    <Tab value="mouseDrawCircle">
-        **Description:** Draws a circle with mouse movements.
-
-        **Syntax:**
-        ```plaintext
-        mouseDrawCircle <radius> <segments> <stepDelay>
-        ```
-
-        **Example:**
-        ```plaintext
-        mouseDrawCircle 50 36 20
-        ```
-    </Tab>
-
-    <Tab value="mouseMoveCorner">
-        **Description:** Moves mouse to screen corner.
-
-        **Syntax:**
-        ```plaintext
-        mouseMoveCorner <corner>
-        ```
-
-        **Supported Corners:**
-        - `top-left`
-        - `top-right`
-        - `bottom-left`
-        - `bottom-right`
-        - `center`
-
-        **Example:**
-        ```plaintext
-        mouseMoveCorner top-right
         ```
     </Tab>
 </Tabs>
