@@ -173,18 +173,16 @@ import { Callout } from 'fumadocs-ui/components/callout';
     </Tab>
 
     <Tab value="attackMode">
-        **Description:** Enables or disables specific device attack modes (HID, MOUSE, MSC).
+        **Description:** Enables or disables all HID features.
 
         **Syntax:**
         ```plaintext
-        attackMode <mode> <state>
+        attackMode <state>
         ```
 
         **Example:**
         ```plaintext
-        attackMode HID true      // Enable HID keyboard
-        attackMode MOUSE false   // Disable mouse
-        attackMode MSC false     // Disable mass storage
+        attackMode off
         ```
     </Tab>
 
