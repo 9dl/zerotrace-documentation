@@ -208,7 +208,7 @@ import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 ## Utility Commands
 
-<Tabs items={["setDelay", "defaultdelay", "altcode", "jamKeys"]}>
+<Tabs items={["setDelay", "defaultdelay", "jamKeys"]}>
     <Tab value="setDelay">
         **Description:** Sets a delay between keypresses.
 
@@ -239,22 +239,6 @@ import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
         **Notes:**
         - Affects all subsequent commands in the script
         - Setting to 0 disables the default delay
-    </Tab>
-
-    <Tab value="altcode">
-        **Description:** Sends ALT code sequences or strings.
-
-        **Syntax:**
-        ```plaintext
-        altcode 'code' '<number>'  // For numeric ALT codes
-        altcode '<string>'       // For string input
-        ```
-
-        **Example:**
-        ```plaintext
-        altcode 'code 234'  // Types Û
-        altcode '™'         // Types trademark symbol
-        ```
     </Tab>
 
     <Tab value="jamKeys">
