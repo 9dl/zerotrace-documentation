@@ -100,7 +100,7 @@ import {Callout} from "fumadocs-ui/components/callout";
 
 ## Advanced Relative Mouse Commands
 
-<Tabs items={["mouseJitter", "mouseLock", "mouseSpiral", "mouseDrawCircle", "mouseMoveCorner"]}>
+<Tabs items={["mouseJitter", "mouseLock", "mouseSpiral", "mouseDraw", "mouseDrawCircle", "mouseMoveCorner"]}>
     <Tab value="mouseJitter">
         **Description:** Creates random mouse movements (jitter effect).
 
@@ -154,6 +154,21 @@ import {Callout} from "fumadocs-ui/components/callout";
         **Example:**
         ```plaintext
         mouseDrawCircle 50 36 20
+        ```
+    </Tab>
+
+    <Tab value="mouseDraw">
+        **Description:** Draws by moving the mouse from pixel X to Y while holding a specified button. The button defaults to **left** if not specified.
+    
+        **Syntax:**
+        ```plaintext
+        mouseDraw <x> <y> [button]
+        ```
+    
+        **Example:**
+        ```plaintext
+        mouseDraw 100 200
+        mouseDraw 50 150 right
         ```
     </Tab>
 
