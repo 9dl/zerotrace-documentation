@@ -7,104 +7,86 @@ import { Callout } from "fumadocs-ui/components/callout";
 
 # Installation & Setup
 
-Start using ZeroTrace in three streamlined steps: **Prepare → Update → Connect**. Follow this guide for a smooth and reliable setup.
+Get started with ZeroTrace in just three simple steps: **Prepare → Flash → Connect**.
 
 ---
 
-## 📦 Preparation Checklist
+## 1. Preparation
 
-**What You'll Need:**
-- ✅ ZeroTrace device
-- ✅ USB-C cable (supports data transfer)
-- ✅ Computer (Windows, macOS, or Linux) for firmware updates
-
-**Software:**
-- ✅ Modern web browser (Chrome or Edge recommended)
-- ✅ Internet connection for initial setup and updates
+**You'll Need:**
+- ZeroTrace device
+- USB-C data cable
+- Computer (Windows, macOS, or Linux)
+- Chrome or Edge browser (recommended)
+- Internet connection
 
 ---
 
-## 🔌 Port Configuration Guide
+## 2. Port Guide
 
-ZeroTrace features two versatile USB ports for distinct purposes:
+ZeroTrace has two USB ports:
 
-| Port Type | Primary Function            | Use Case Example      |
-|-----------|----------------------------|-----------------------|
-| **COM**   | Firmware updates, BLE tools| Maintenance, flashing |
-| **USB**   | HID injection              | Keystroke attacks     |
+| Port | Use For           | Example           |
+|------|-------------------|-------------------|
+| **COM** | Updates, tools     | Firmware flashing |
+| **USB** | HID payloads       | Keystroke attacks |
 
 <Callout type="info">
-    💡 <b>Tip:</b> Use the <b>COM port</b> for updates/maintenance, and the <b>USB port</b> for daily payload operations.
+    💡 <b>Tip:</b> Use <b>COM</b> for device maintenance and updates. Use <b>USB</b> for payload operations.
 </Callout>
 
 ---
 
-## 🚀 Firmware Management
+## 3. Flash Firmware
 
-### Preparation Steps
-1. Connect ZeroTrace to your computer via the **COM port** using a USB-C data cable.
-2. Ensure your internet connection is stable.
-
-### Flashing the Firmware
-<Tabs items={['Windows/macOS/Linux']}>
-    <Tab value="Windows/macOS/Linux">
-        1. Open the [ZeroTrace Web Flasher](https://dashboard.zerotrace.pw/) in Google Chrome
-        2. Click **Connect**, select your ZeroTrace device, and choose **Flash Firmware**
-        3. Wait until the flashing process completes (about 2 minutes)
-        4. Disconnect and restart the device
+<Tabs items={['All Platforms']}>
+    <Tab value="All Platforms">
+        1. Connect ZeroTrace to your computer via the **COM** port using a USB-C data cable.
+        2. Open the [ZeroTrace Web Flasher](https://dashboard.zerotrace.pw/) in Chrome.
+        3. Click **Connect**, select your device, then choose **Flash Firmware**.
+        4. Wait (~2 minutes) for the process to finish, then unplug and restart your device.
     </Tab>
 </Tabs>
 
-#### 🐧 Linux Users – Serial Permission Fix
-If you see the error:
-**`Failed to execute 'open' on 'SerialPort'`**
-Run the following command to grant serial port access:
+**Linux Only:**
+If you see `Failed to execute 'open' on 'SerialPort'`, run:
 ```bash
 sudo usermod -a -G dialout $USER
 ```
-Then **log out and back in** for the changes to take effect.
+Then **log out and back in**.
 
 ---
 
-## 📡 Connecting to ZeroTrace
+## 4. Connect to ZeroTrace
 
-### Default Network Credentials
+| Setting      | Value                  |
+|--------------|------------------------|
+| SSID         | `[DeviceName] ZT`      |
+| IP Address   | `192.168.4.1`          |
+| Password     | `ZeroTrace`            |
 
-| Parameter    | Value                |
-|--------------|----------------------|
-| SSID Pattern | `[DeviceName] ZT`    |
-| IP Address   | `192.168.4.1`        |
-| Password     | `ZeroTrace` (case-sensitive) |
-
-### Connection Steps
-1. Power on the ZeroTrace device.
-2. Find and connect to the WiFi network ending with `ZT`.
-3. Use the default password provided above.
-4. Open [`http://192.168.4.1`](http://192.168.4.1) in your browser to access the web dashboard.
+**Steps:**
+1. Power on ZeroTrace.
+2. Connect to the WiFi network ending with `ZT` (password above).
+3. Visit [`http://192.168.4.1`](http://192.168.4.1) in your browser.
 
 <Callout type="success">
-    🌐 <b>You're Connected!</b> You can now configure, script, and launch payloads using the web dashboard.
+    🌐 <b>You're Connected!</b> Configure and launch payloads from the web dashboard.
 </Callout>
 
 ---
 
-## ⚠️ Troubleshooting Guide
+## 5. Troubleshooting
 
-### Common Issues & Solutions
+| Issue                | Solution                                   |
+|----------------------|--------------------------------------------|
+| Device not found     | Try a different USB-C data cable           |
+| WiFi not showing     | Wait 2–3 minutes, check for WiFi conflicts |
+| Flash fails          | Use a reliable cable, ensure stable power  |
+| Timeout/Error        | Verify WiFi and IP, restart device         |
 
-| Symptom                | Possible Solution                                  |
-|------------------------|----------------------------------------------------|
-| Device not recognized  | Try a different USB-C cable (data-capable)         |
-| Connection timeout     | Double-check IP address and WiFi connection        |
-| Flashing fails         | Ensure stable power and use a reliable data cable  |
-
-**If the WiFi AP isn't visible:**
-- Wait 2–3 minutes after powering on
-- Make sure there are no WiFi conflicts nearby
-- Perform a factory reset if the issue persists
-
----
+- For persistent WiFi issues, perform a factory reset.
 
 <Callout type="success">
-    🎉 <b>Setup Complete!</b> Head over to the [Usage Guide](/usage) to start using your ZeroTrace device.
+    🎉 <b>Setup Complete!</b> Ready to go? Check out the [Usage Guide](/usage) next!
 </Callout>

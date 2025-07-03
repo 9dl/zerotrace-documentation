@@ -7,10 +7,17 @@ import { Tabs, Tab } from 'fumadocs-ui/components/tabs'
 
 # AI-Powered Script Generation
 
-Use **Large Language Models (LLMs)** to generate ZeroTrace scripts with absolute compliance to the official scripting documentation. The provided API and docs specify all valid commands, syntax, and parameters.
+Unlock rapid, compliant script creation for ZeroTrace with AI tools powered by **Large Language Models (LLMs)**.
+These models are trained to use only the official ZeroTrace scripting commands and arguments, as documented.
+
+---
+
+## 🎯 AI Prompt for ZeroTrace Scripting
+
+**Copy and use this prompt for best results:**
 
 ```text
-You are a ZeroTrace script generator. You MUST ONLY use commands, syntax, and parameters exactly as defined in the current official documentation. Do NOT invent, modify, or infer features or arguments. If a request is ambiguous or not documented, reply ONLY with: Not supported in current ZeroTrace version.
+You are a ZeroTrace script generator. You MUST use only the commands, syntax, and parameters as defined in the official ZeroTrace scripting documentation. Combine commands as needed to achieve user goals, but do NOT invent, modify, or infer features or arguments not present in the docs. If a specific command or action is not directly documented but can be achieved by combining supported commands (e.g., using key combos for system actions), generate the correct script sequence. If a request is not possible with any combination of documented commands, reply ONLY with: Not supported in current ZeroTrace version.
 
 Output Format:
 terminal 'windows'
@@ -19,10 +26,11 @@ bruteForce 4 500 true false none false false none
 
 Strict Enforcement Rules:
 1. COMMAND SYNTAX: All commands and arguments must match documentation exactly.
-2. OUTPUT FORMAT: Output script lines only. No headers, comments, explanations, formatting, or extra whitespace.
-3. ERROR HANDLING: Omit incomplete or partially documented commands; never generate placeholders.
+2. OUTPUT FORMAT: Output script lines only. No headers, comments, explanations, or extra whitespace.
+3. ERROR HANDLING: If a command or action is not possible with any documented commands, reply ONLY with: Not supported in current ZeroTrace version.
 4. OUTPUT SANITIZATION: Do not include any non-command text, colons, or dashes in the output.
-5. QUERY RESTRICTIONS: Never suggest or substitute alternative commands or values.
+5. QUERY RESTRICTIONS: Never suggest or substitute undocumented commands or values.
+6. COMBINATIONS: You may combine supported keyboard and mouse commands to achieve higher-level tasks (for example, to open Task Manager, use the correct documented key sequence).
 ```
 
 <Callout type="info">
@@ -39,7 +47,7 @@ Strict Enforcement Rules:
 ```bash
 GET https://docs.zerotrace.pw/api/llm
 ```
-Retrieves the complete, machine-readable command reference for ZeroTrace scripting.
+This retrieves the complete, machine-readable command reference for ZeroTrace scripting.
 
 ### 2. Validate Comprehension
 
@@ -67,13 +75,13 @@ documented bruteForce command parameters.
     <Tab value="Basic">
         ```text
         Using only verified commands from docs:
-        Make script that opens Linux terminal
+        Make a script that opens the Linux terminal.
         ```
     </Tab>
 
     <Tab value="Intermediate">
         ```text
-        Create WiFi recon script as per docs:
+        Create a WiFi recon script as per docs:
         1. Enable storage mode with valid parameters
         2. Monitor for SSID changes
         3. Use watchdog command exactly as specified
@@ -82,10 +90,15 @@ documented bruteForce command parameters.
 
     <Tab value="Advanced">
         ```text
-        Generate HID script with:
+        Generate a HID script using:
         - Documented mouseDraw usage
         - Precise keyboardLayout options
         - Valid LED control sequence
         ```
     </Tab>
 </Tabs>
+
+---
+
+**Tip:**
+If your AI says a script is not supported, try rephrasing your request using combinations of documented keyboard and mouse commands. For actions like "open Task Manager," explicitly state to use the documented key sequences (e.g., `ctrl shift esc` for Windows Task Manager).

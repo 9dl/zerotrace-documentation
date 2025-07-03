@@ -17,8 +17,6 @@
     "scripting-language/ble",
     "scripting-language/language",
     "---Development & Support---",
-    "llm",
-    "license",
-    "tracking"
+    "llm"
   ]
 }

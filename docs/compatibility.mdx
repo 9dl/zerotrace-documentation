@@ -4,22 +4,39 @@ title: 🖥️ OS Compatibility
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
+# OS Compatibility
+
+Easily see which operating systems work with ZeroTrace features, and what the limitations are.
+
 <Callout type="info">
-    Testing Legend:
-    - ✔️ Yes = Officially verified by ZeroTrace team
-    - ⚠️ Partial = Community-reported or limited verification
-    - ❌ = Not tested/confirmed
+    <b>Testing Key:</b><br/>
+    ✔️ Yes &mdash; Fully verified by the ZeroTrace team<br/>
+    ⚠️ Partial &mdash; Community reported or only limited testing<br/>
+    ❌ No &mdash; Not tested or confirmed
 </Callout>
 
-| OS             | HID Support | BLE Support | Tested |
-|----------------|-------------|-------------|--------|
-| **Windows 11** | ✅ Full      | ✅ Full      | ✔️ Yes |
-| **Windows 10** | ✅ Full      | ✅ Full      | ✔️ Yes |
-| **macOS**      | ✅ Full      | ✅ Full      | ✔️ Yes |
-| **Linux**      | ✅ Full      | ✅ Full      | ✔️ Yes |
-| **Android**    | ✅ Full      | ✅ Full      | ✔️ Yes |
-| **iOS/iPadOS** | ✅ Full      | ✅ Full      | ✔️ Yes |
+---
 
-## 🔴 Universal Limitations
-- **Mouse Commands**: USB/HID mode only
-- **Live Control**: USB/HID mode only
+| OS             | HID Support | BLE Support | Tested |
+|----------------|:-----------:|:-----------:|:------:|
+| **Windows 11** |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+| **Windows 10** |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+| **macOS**      |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+| **Linux**      |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+| **Android**    |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+| **iOS/iPadOS** |   ✅ Full    |   ✅ Full    | ✔️ Yes |
+
+---
+
+## 🚫 What Are the Limitations?
+
+- **Mouse Control and Live Mode:**
+Only work when your device is connected to your computer’s USB port (HID mode).
+These features are not available over Bluetooth.
+
+- **All other features:**
+Work normally on all listed operating systems, as long as the device is connected via USB or BLE, as supported.
+
+<Callout type="warning">
+    If you need to use live mouse control or keyboard/mouse scripting, always connect ZeroTrace to your computer with a USB cable.
+</Callout>

@@ -4,36 +4,51 @@ title: 💬 Comments
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
-Comments in ZeroTrace scripts let you **add notes or explanations** to your code without affecting how it runs. Use comments to make your scripts clearer for yourself and others!
+Comments let you **add notes or explanations** to your ZeroTrace scripts.
+They make your scripts much easier to understand for you and for others because comments are always ignored when your script runs.
 
-## ✏️ Comment Syntax Rules
+---
 
-You can write comments in several ways:
+## ✏️ How to Write Comments
 
-1. **Official Comments**  
-Use `#` or `//` at the start of a line
-Use '//' for inline comments
+**ZeroTrace supports comments almost anywhere, just like in popular programming languages!**
+
+### 1. Use `#` or `//` for Comments
+
+- You can add **`#` or `//` anywhere on a line** at the start or after a command.
+- Everything after `#` or `//` is ignored by the interpreter.
 
 ```plaintext
-# This is a comment
-// This is also a comment
+# This is a full line comment
+
 writeLn "Hello" // This is an inline comment
-delay "1000" # Another inline comment
-````
 
-2. **Freestyle Comments**
-You can write anything on a new line, as long as it **doesn't get detected as a command**.
-For example:
+delay "1000" # Another inline comment
+
+blabla // this is just a random note
+
+// This whole line is a comment
+```
+
+---
+
+### 2. Freestyle Notes
+
+- Any line that **doesn't match a command** is treated as a comment and ignored.
+- You can write plain English notes as long as you **don’t start with a command word**.
 
 ```plaintext
-This is just a note and will be ignored by the interpreter
+This is a freestyle note that will be ignored by the script runner.
+Anything that doesn’t look like a command is safe to use as a comment.
 ```
 
 <Callout type="warn">
-    If your comment looks like a command (e.g., starts with known keywords like `writeLn`, `delay`, etc.), it **will be executed**. So, avoid using command-like phrases for freestyle comments!
+    <b>Warning:</b> If your freestyle note starts with a command (like <code>writeLn</code>, <code>delay</code>, etc.), it <b>will be executed</b>!
 </Callout>
 
-## ✅ Valid Usage
+---
+
+## ✅ Good Examples
 
 ```plaintext
 # This script prints a message
@@ -42,17 +57,25 @@ writeLn "Hello, World!" // Inline comment
 // Wait before next command
 delay "1000"
 
-This is a freestyle comment explaining what happens next
-_$VAR isAdmin = "true"
+This is a freestyle note about what happens next
+
+_$VAR isAdmin = "true" // Variable assignment with comment
 ```
 
-## ❌ Invalid Usage
+---
+
+## ❌ Bad Example
 
 ```plaintext
 writeLn "Test" This looks like a command and may cause errors
-writeLn "Test" # This looks like a command and may cause errors
 ```
 
+This is incorrect because the text after `writeLn "Test"` is **not marked as a comment** (missing `#` or `//`).
+Always use `#` or `//` for inline comments after commands.
+
+---
+
 <Callout type="info">
-    Use comments to make your scripts easier to understand. Official comments (`#` or `//`) are recommended for clarity. Freestyle comments work too—just don’t make them look like commands!
+    <b>Tip:</b> For best results and easy reading, use <code>#</code> or <code>//</code> for all your comments.
+    Inline comments are fully supported put them after any command, anywhere on the line!
 </Callout>

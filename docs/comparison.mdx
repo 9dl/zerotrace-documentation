@@ -11,25 +11,24 @@ Is **ZeroTrace** the ultimate **HID injection tool**? Here’s a data-driven bre
 
 ## 🛠 Feature Breakdown
 
-| Feature                         | 🦆 **Rubber Ducky**        | 🕵️ **ZeroTrace**                               |
-|---------------------------------|----------------------------|-------------------------------------------------|
-| **Device Type**                 | HID Injection              | HID & BLE Injection                             |
-| **Web UI**                      | ❌ No                       | ✅ Yes (cross-platform, real-time editing)       |
-| **Live Payload Editing**        | ❌ No                       | ✅ Yes (no reflash, edit/run instantly)          |
-| **Keystroke Injection Speed**   | ⚡ Fast (configurable)      | ⚡ Fast (configurable)                           |
-| **Scripting Language**          | Ducky Script               | ZT Script                                       |
-| **WiFi Connectivity**           | ❌ No                       | ✅ Yes (AP, STA, easy setup)                     |
-| **Bluetooth HID Mode**          | ❌ No                       | ✅ Yes (Automatic Switching)                     |
-| **Remote Execution**            | ❌ No                       | ✅ Yes (Web UI, trigger from anywhere)           |
-| **Multi-Script Support**        | ❌ No (single script)       | ✅ Yes (multi-payload, hot swap, file manager)   |
-| **Self-Destruct Mode**          | ❌ No                       | ✅ Yes (wipe storage instantly)                  |
-| **HID Spoofing**                | ⚠️ Limited (keyboard only) | ✅ Yes (keyboard, mouse, mass-storage, printer)  |
-| **Mouse Automation**            | ❌ No                       | ✅ Yes (mouseMove, mouseDraw, mouseJitter, etc.) |
-| **Brute Force Tools**           | ❌ No                       | ✅ Yes (PIN brute, password brute, config opts)  |
-| **Scripting Blocks/Conditions** | ✅ Yes                      | ✅ Yes (if/else, repeat, blocks, variables)      |
-| **Live Execution**              | ❌ No                       | ✅ Yes (real-time log in Web UI)                 |
-| **Storage**                     | Onboard, SD Card           | Onboard (10mb)                                  |
-| **Price**                       | 💰 $130+                   | 💸 24,85€ (≈$27)                                |
+| Feature                         | 🦆 **Rubber Ducky**                                      | 🕵️ **ZeroTrace**                               |
+|---------------------------------|----------------------------------------------------------|-------------------------------------------------|
+| **Device Type**                 | HID Injection (keyboard only)                            | HID & BLE Injection                             |
+| **Web UI**                      | ❌ No                                                     | ✅ Yes (cross-platform, real-time editing)       |
+| **Live Payload Editing**        | ❌ No (requires re-flash)                                 | ✅ Yes (no reflash, edit/run instantly)          |
+| **Keystroke Injection Speed**   | ⚡ Fast (configurable)                                    | ⚡ Fast (configurable)                           |
+| **Scripting Language**          | Ducky Script 3.0                                         | ZeroTrace Scripting Language                    |
+| **WiFi Connectivity**           | ❌ No                                                     | ✅ Yes (AP, STA, easy setup)                     |
+| **Bluetooth HID Mode**          | ❌ No                                                     | ✅ Yes (Automatic Switching)                     |
+| **Remote Execution**            | ❌ No                                                     | ✅ Yes (Web UI, trigger from anywhere)           |
+| **Multi-Script Support**        | ❌ No (single script per flash)                           | ✅ Yes (multi-payload, hot swap, file manager)   |
+| **Self-Destruct Mode**          | ❌ No                                                     | ✅ Yes (wipe storage instantly)                  |
+| **HID Spoofing**                | ⚠️ Limited (keyboard only, some VID/PID spoofing)        | ✅ Yes (keyboard, mouse, mass-storage, printer)  |
+| **Mouse Automation**            | ❌ No                                                     | ✅ Yes (mouseMove, mouseDraw, mouseJitter, etc.) |
+| **Brute Force Tools**           | ✅ Yes (PIN/password brute-force via scripting)           | ✅ Yes (PIN brute, password brute, config opts)  |
+| **Scripting Blocks/Conditions** | ✅ Yes (if/then, while, functions, variables, extensions) | ✅ Yes (if/else, repeat, blocks, variables)      |
+| **Live Execution**              | ❌ No (no real-time log, UI, or feedback)                 | ✅ Yes (real-time log in Web UI)                 |
+| **Price**                       | 💰 $100 (basic), $120–$140 (bundles, July 2025)          | 💸 34,85€ (≈$40.99)                             |
 
 ---
 
@@ -41,25 +40,34 @@ ZeroTrace uses **ZT Script**: a modern, extensible scripting language with more 
     <Tab value="Ducky Script">
         Example payload:
         ```text
+        REM Hello World Example
         DELAY 1000
         STRING Hello, world!
+        ENTER
+
+        REM Open Terminal and run command
+        DELAY 500
+        GUI r
+        DELAY 500
+        STRING cmd
+        ENTER
+        DELAY 500
+        STRING whoami
         ENTER
         ```
     </Tab>
     <Tab value="ZT Script">
         Example payload:
         ```text
+        // Hello World Example
         delay 1000
         writeLn "Hello, world!"
+
+        // Open Terminal and run command
+        delay 500
+        terminal "windows"
+        delay 500
+        writeLn "whoami"
         ```
     </Tab>
 </Tabs>
-
-✅ **ZT Script** offers better readability, modular commands, variables, blocks, conditions, and supports advanced automation.
-
----
-
-## 💡 Conclusion
-
-**ZeroTrace** is the most advanced, cost-effective HID injection platform available—outpacing Rubber Ducky in every major category, from remote control and scripting to security, storage, and ease of use.
-Upgrade for next-level automation, research, and red teaming.
